@@ -49,12 +49,7 @@ app.use(bodyParser.json())
  */ 
 var methodOverride = require('method-override')
  
-/**
- * using custom logic to override method
- * 
- * there are other ways of overriding as well
- * like using header & using query value
- */ 
+
 app.use(methodOverride(function (req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
@@ -64,14 +59,7 @@ app.use(methodOverride(function (req, res) {
   }
 }))
  
-/**
- * This module shows flash messages
- * generally used to show success or error messages
- * 
- * Flash messages are stored in session
- * So, we also have to install and use 
- * cookie-parser & session modules
- */ 
+
 var flash = require('express-flash')
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
